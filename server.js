@@ -3,12 +3,12 @@
 const http = require('http')
 const moment = require('moment')
 
-const server = http.createServer((req, res) => {
+var server = http.createServer((req, res) => {
   switch (req.method) {
     case 'GET':
       if (req.url === '/time') {
-        const timestamp = moment(new Date())
-        const currentTime = timestamp.format('h:mm A')
+        var timestamp = moment(new Date())
+        var currentTime = timestamp.format('h:mm A')
         res.writeHeader(200, {'Content-Type': 'text/html'})
         res.write(
           `<h1>Current time of the server:&nbsp;
@@ -28,7 +28,7 @@ const server = http.createServer((req, res) => {
         )
         res.end()
       } else if (req.url.slice(0, 7) === '/greet/' && req.url.length > 7) {
-        const name = req.url.slice(7)
+        var name = req.url.slice(7)
         res.writeHead(200, {'Content-Type': 'text/html'})
         res.write('<h1>Hello ' + name + '!</h1>')
         res.end()
@@ -42,8 +42,8 @@ const server = http.createServer((req, res) => {
     case 'POST':
       if (req.url === '/greet') {
         req.on('data', data => {
-          const dataStr = data.toString()
-          const name = dataStr.slice(dataStr.indexOf('=') + 1)
+          var dataStr = data.toString()
+          var name = dataStr.slice(dataStr.indexOf('=') + 1)
           res.writeHead(200, {'Content-Type': 'text/html'})
           res.write('<h1>Hello ' + name + '!</h1>')
           res.end()

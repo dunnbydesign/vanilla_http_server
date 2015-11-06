@@ -1,12 +1,14 @@
+'use strict'
+
 const gulp = require('gulp')
 const mocha = require('gulp-mocha')
 const jshint = require('gulp-jshint')
 
-const paths = {
+var paths = {
   tests: ['./test.js'],
   scripts: ['./*.js']
 }
-const tasks = ['watch', 'test', 'lint']
+var tasks = ['watch', 'test', 'lint']
 
 gulp.task('test', () => {
   return gulp.src(paths.tests, {read: false})
