@@ -84,4 +84,18 @@ describe('Routes', () => {
           })
       })
   })
+
+  it('A POST request to "/greet" should have a successful response that provides a string with particular content', done => {
+    chai.request('localhost:3000')
+      .post('/greet')
+      .send('name=Jeff')
+      .end((err, res) => {
+        if (err) console.error(err)
+        expect(err).to.be.null
+        expect(res.status).to.equal(200)
+        expect(res.text).to.be.a('string')
+        expect(res.text).to.equal('<h1>Hello Jeff!</h1>')
+        done()
+      })
+  })
 })
