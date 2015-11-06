@@ -9,7 +9,7 @@ const moment = require('moment')
 
 chai.use(chaiHttp)
 
-// require(__dirname + '/server.js') <--- Had to remove in order to keep the Terminal from hanging when using gulp
+// require(__dirname + '/server.js') <--- Had to remove this line in order to keep the Terminal from hanging when using gulp
 
 describe('Routes', () => {
   it('A GET request to "/time" should have a successful response that provides a string with particular content', done => {
